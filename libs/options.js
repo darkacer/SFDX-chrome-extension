@@ -16,26 +16,7 @@ var settings = {
 		"authorization": "Bearer " + token
 	}
 }
-/*dd
-chrome.tabs.onUpdated.addListener(function authorizationHook(tabId, changeInfo, tab) {
-	var count = 0;
-	chrome.cookies.getAll({"name":"sid"}, function(sidcook) {
-		$('#table').empty();
-		$('#table').append('<table id="tablefriendsname" border=1></table>');
-		sidcook.forEach(elem => {
-			var domain = elem.domain;
-			if(new RegExp(".*salesforce\.com").test(domain)) {
-				console.log(elem);
-				$("#tablefriendsname").append("<tr><td>" + elem.domain + "</td></tr>");
-				idToOrgKey.set(count, elem.value);
-				idToOrgURL.set(count, elem.domain);
-				count++;
-			}
-		});
-		loadEventHandlers();
-	});
-});
-*/
+
 function loadOrgs() {
 	var count = 0;
 	chrome.cookies.getAll({"name":"sid"}, function(sidcook) {
