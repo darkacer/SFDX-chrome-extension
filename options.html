@@ -1,0 +1,78 @@
+<html>
+	<head>
+	<style>
+	.ht:hover .tooltip {
+		display:block;
+	}
+	.tooltip {
+		display: none;
+		color: #dddddd;
+		margin-left: 28px; /* moves the tooltip to the right */
+		margin-top: 15px; /* moves it down */
+		position: absolute;
+		z-index: 1000;
+	}
+	textarea {
+		 width: 800px;
+		 height: 100px;
+		 background-color: black;
+		 font-family: Consolas;
+		 border: 1px solid black;
+		 color : white
+	}
+	</style>
+	</head>
+	<textarea rows="2" cols="25" id="scratchPad" placeholder='ScratchPad'></textarea><br><br>
+	<body style="color:#dddddd; background-color:#333333; font-family:'Consolas'">
+	You are connected to the following orgs, choose wisely <br><br>
+		<div id='table'>	
+		</div>
+		<div id='panel' style='display:none'><br>
+			Currently pointing to org <b><div id='orgName' style="color:green"></div></b><br>
+			Select any of the actions
+
+			<select id='selector'>
+				<option value="--Select One--" selected>--Select One--</option>
+				<option value="queryMaker">queryMaker</option>
+				<option value="objectDetails">objectDetails</option>
+				<option value="recordDetails">recordDetails</option>
+				<option value="referencedBy">referencedBy</option>
+			</select>
+			<button id='clearData'>Clear Data</button>
+			<br><br><br>
+			<div class='actions'>
+				<div id='queryMaker' style="display: none;">
+					Write a SOQL to get Records <br>
+					<textarea rows="4" cols="50" id="query"></textarea>
+					<button id='sendQuery'>Query!</button>
+					<!-- <button id='toolingQuery'>Tooling Query</button> -->
+					<div id='showData' style='display:none'>
+						<div id='actualData'></div>
+					</div>
+				</div>
+				<div id='objectDetails' style="display: none;">
+					Get List of sObjects 
+					<input list="objectName" cols="50" id='selectedObj'>
+					<datalist id="objectName" class='datalist'></datalist>
+					<button id='getObjDetails'>Get Details</button>
+					<div id='objectTable' class='container'></div>
+				</div>
+				<div id='recordDetails' style="display: none;">This will show record details of given id   
+					<input type="text" id='recordId' placeholder='001xxxxxxxxx'>
+					<input list="objectName" cols="50" id='selectObj' placeholder='Object API name'>
+					<datalist id="objectName" class='datalist'></datalist>
+					<button id='getRecDetails'>Get Record detail</button>
+					<div id='recordDetialTable'></div>
+				</div>
+				<div id='referencedBy' style="display: none;">
+					This will show how many objects have references to any given object
+					Feature coming soon
+				</div>
+			</div>
+		</div>
+		
+		<script src='libs/jquery.js'></script>
+		<script src='libs/jquery-ui.js'></script>
+		<script src='libs/options.js'></script>
+	</body>
+</html>
